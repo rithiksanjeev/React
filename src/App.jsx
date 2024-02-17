@@ -3,13 +3,16 @@
 // rfce - short cut to create the component
 import './App.css'; // links the css file
 import Header from './Components/Header' // default import not need curly braces
-import Header2 from './Components/Header2' // default import not need curly braces
 // importing normal functions to git
 import {greet ,greetOne} from './Components/Header' //named import
 import pikachu from './assets/pikachu.png'
-import Footer from './Components/Footer'
-import Products from './Components/Products'
-import Hero from './Components/Hero';
+import {Routes,Route} from 'react-router-dom'
+import Home from './pages/Home';
+import About from './pages/About';
+import Footer from './Components/Footer';
+import Header2 from './Components/Header2';
+import Notfound from './pages/Notfound';
+import ProductDeatils from './pages/ProductDeatils';
 
 
 function App()
@@ -31,10 +34,14 @@ function App()
     {/* Header component from another file */}
     <div>
       <Header2/>
-      <Hero/>
-      <Products/>
+      <Routes>
+        <Route path="/" element ={<Home/>} />
+        <Route path="/about" element ={<About/>} />
+        <Route path="/*" element ={<Notfound/>} />
+        {/* : represents any id */}
+        <Route path='/product/:productId' element={<ProductDeatils/>} />
+      </Routes>
       <Footer/>
-      
       App code
     </div>
 
